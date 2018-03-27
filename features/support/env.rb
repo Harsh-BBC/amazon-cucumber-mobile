@@ -17,6 +17,7 @@ end
 
 Capybara.register_driver current_driver do |app|
   caps = ENV['HIVE'] == 'true' ? appium_caps.fetch('Hive CI') : appium_caps.fetch('Nexus 5')
+  appium_port = ENV['APPIUM_PORT'] || '4723'
   puts caps.to_s
   url = "http://localhost:#{appium_port}/wd/hub/" # Url to your running appium server
   appium_lib_options = { server_url: url }
