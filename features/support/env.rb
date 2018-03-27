@@ -15,7 +15,7 @@ def appium_caps
     }
 end
 
-Capybara.register_driver current_driver do |app|
+Capybara.register_driver :appium do |app|
   caps = ENV['HIVE'] == 'true' ? appium_caps.fetch('Hive CI') : appium_caps.fetch('Nexus 5')
   appium_port = ENV['APPIUM_PORT'] || '4723'
   puts caps.to_s
